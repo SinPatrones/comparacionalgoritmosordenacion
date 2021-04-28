@@ -3,7 +3,7 @@
 Medidor::Medidor(){}
 
 double Medidor::medirTiempoDemora(function<void(long *, long)> algoritmo, long * lista, long tam){
-    double t0, t1;
+    double t0 = 0, t1 = 0;
 
     t0=clock();
     algoritmo(lista, tam);
@@ -13,7 +13,7 @@ double Medidor::medirTiempoDemora(function<void(long *, long)> algoritmo, long *
 }
 
 double Medidor::medirTiempoDemora(function<void(long *, long, long)> algoritmo, long * lista, long min, long max){
-    double t0, t1;
+    double t0 = 0, t1 = 0;
 
     t0=clock();
     algoritmo(lista, min, max);

@@ -19,11 +19,19 @@ void GeneradorNumeros::generarMatrizAleatorio(long filas, long columnas, long mi
 
     srand(time(NULL));
 
+    vector<thread> threads;
+
     for (int fila = 0; fila < filas; fila++){
-        for (int columna = 0; columna < columnas; columna++){
-            matriz[fila][columna] = minimo + rand() % maximo;
-        }
+        threads.push_back(std::thread(generarListaAleatoria, columnas, minimo, maximo, std::ref(matriz[fila])));
     }
 
+    for (int fila = 0; fila < filas; fila++){
+        threads.at(fila).join();
+    }
 }
 
+void GeneradorNumeros::generarListaAleatoria(long tam, long minimo, long maximo, long * & lista){
+    for (long idx = 0; idx < tam; idx++){
+        lista[idx] = minimo + rand() % maximo;
+    }
+}

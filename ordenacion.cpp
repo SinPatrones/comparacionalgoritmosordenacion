@@ -9,16 +9,13 @@ void Ordenacion::swap(long & a, long & b){
 }
 
 int Ordenacion::partition(long * arr, long low, long high){
-    int pivot = arr[high];    // pivot
-    int i = (low - 1);  // Index of smaller element
+    int pivot = arr[high];
+    int i = (low - 1);
 
-    for (int j = low; j <= high- 1; j++)
-    {
-        // If current element is smaller than or
-        // equal to pivot
+    for (int j = low; j <= high- 1; j++){
         if (arr[j] <= pivot)
         {
-            i++;    // increment index of smaller element
+            i++;
             swap(arr[i], arr[j]);
         }
     }
